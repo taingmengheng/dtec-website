@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "D.TEC Engineering & Machinery", 
+  description = "Industrial workshop specs, heavy equipment, and mechanical project engineering." 
+} = Astro.props;
+---
+
+<!usr/bin/env html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
+    <!-- Main Content Slot -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Simple Shared Footer -->
+    <footer class="border-t border-slate-800 py-6 text-center text-sm text-slate-500">
+      <p>© {new Date().getFullYear()} D.TEC Engineering. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

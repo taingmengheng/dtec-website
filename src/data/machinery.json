@@ -1,0 +1,16 @@
+[
+  {
+    "id": "cnc-lathe-01",
+    "name": "Heavy-Duty CNC Lathe",
+    "category": "Machining & Milling",
+    "specs": "Max Swing: 630mm | Turning Length: 2000mm",
+    "status": "In Workshop"
+  },
+  {
+    "id": "crane-50t",
+    "name": "50-Ton Overhead Crane",
+    "category": "Heavy Equipment",
+    "specs": "Capacity: 50 Tons | Span: 24m",
+    "status": "Active Service"
+  }
+]
