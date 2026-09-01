@@ -1,34 +1,210 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import MachineryList from '../components/MachineryList.jsx';
+import ProductCard from '../components/ProductCard.astro';
+import FeatureStrip from '../components/FeatureStrip.astro';
+import StatsBar from '../components/StatsBar.astro';
+import heroBackground from '../assets/hero-background.jpg';
+
+const products = [
+  { title: "Overhead Cranes", desc: "Single / Double Girder Cranes\nCustom design & installation", icon: "⛓", thumbText: "Overhead Crane" },
+  { title: "Gantry Cranes", desc: "Portable & Rail Mounted\nGantry Cranes", icon: "🏗", thumbText: "Gantry Crane" },
+  { title: "Cargo Lifts", desc: "Safe & reliable lifts for\nindustrial applications", icon: "📦", thumbText: "Cargo Lift" },
+  { title: "Press Brakes", desc: "High precision press brake\nmachines", icon: "🛠", thumbText: "Press Brake" },
+  { title: "Decoiler Machines", desc: "Motorized decoiler for\ncoil handling", icon: "🌀", thumbText: "Decoiler Machine" },
+  { title: "CNC Fiber Laser", desc: "Steel cutting service with\nCNC Fiber Laser", icon: "✂", thumbText: "CNC Fiber Laser" },
+  { title: "BMU Services", desc: "Building Maintenance Unit\nInstallation & Service", icon: "🏢", thumbText: "BMU Services" },
+  { title: "Dock Leveler", desc: "Hydraulic dock leveler for\nloading & unloading safety", icon: "🚛", thumbText: "Dock Leveler" },
+  { title: "Freezer Room Service", desc: "Installation & service\nup to 15kW", icon: "❄", thumbText: "Freezer Room" },
+  { title: "Control & Electrical", desc: "Electrical panel, VFD, Control\nsystem & Safety circuit", icon: "⚡", thumbText: "Control Panel" }
+];
+
+const industries = [
+  { icon: "🏭", label: "Manufacturing" },
+  { icon: "🔩", label: "Steel Fabrication" },
+  { icon: "🏗", label: "Construction" },
+  { icon: "🏬", label: "Warehouse & Logistics" },
+  { icon: "🍾", label: "Food & Beverage" },
+  { icon: "⋯", label: "And More" }
+];
 ---
 
-<Layout title="D.TEC | Industrial Machinery & Engineering">
-  <Navbar />
-
-  <section class="max-w-6xl mx-auto px-4 py-16">
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-slate-100 tracking-tight">
-        Precision Engineering & <span class="text-orange-500">Heavy Machinery</span>
-      </h1>
-      <p class="text-slate-400 mt-4 text-lg">
-        Explore our workshop capabilities, equipment specifications, and past engineering work.
-      </p>
-      <a 
-        href="https://t.me/YourTelegramUsername" 
-        target="_blank" 
-        class="inline-block mt-6 bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 px-6 rounded-lg transition"
-      >
-        Inquire via Telegram
-      </a>
+<Layout title="D.TEC | Engineering Machinery Services">
+  <!-- HEADER -->
+  <header class="flex items-center justify-between px-10 py-3.5 bg-white shadow-sm relative z-10">
+    <div class="flex items-center gap-3">
+      <div class="w-14 h-14 rounded-full bg-[#0d2a52] flex items-center justify-center text-white font-bold text-xl border-4 border-[#e8720c]">
+        DT
+      </div>
+      <div>
+        <div class="text-2xl font-black text-[#0d2a52] tracking-wide">D.TEC</div>
+        <div class="text-[10px] text-[#8a94a0] tracking-widest uppercase">ENGINEERING • MACHINERY • SERVICES</div>
+      </div>
     </div>
 
-    <!-- Machinery Section with hydrated React component -->
-    <div id="machinery" class="pt-8">
-      <h2 class="text-2xl font-bold text-slate-100">Workshop Machinery & Capability</h2>
-      <!-- client:load tells Astro to activate React JS for this component -->
-      <MachineryList client:load />
+    <nav class="hidden md:block">
+      <ul class="flex items-center gap-7 text-sm font-semibold text-[#2b3b4d]">
+        <li><a href="#" class="text-[#e8720c] border-b-2 border-[#e8720c] pb-1">Home</a></li>
+        <li><a href="#about" class="hover:text-[#e8720c]">About Us</a></li>
+        <li><a href="#products" class="hover:text-[#e8720c]">Products</a></li>
+        <li><a href="#services" class="hover:text-[#e8720c]">Services</a></li>
+        <li><a href="#" class="hover:text-[#e8720c]">Projects</a></li>
+        <li><a href="#" class="hover:text-[#e8720c]">News</a></li>
+        <li><a href="#contact" class="hover:text-[#e8720c]">Contact</a></li>
+      </ul>
+    </nav>
+
+    <a href="#contact" class="bg-[#e8720c] hover:bg-[#c85f08] text-white px-5 py-3 font-bold text-sm rounded-xs transition">
+      Get a Quote &rarr;
+    </a>
+  </header>
+
+  <!-- HERO -->
+  <section
+    class="relative min-h-[520px] flex items-center overflow-hidden bg-cover bg-center text-white"
+    style={`background-image: linear-gradient(90deg, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.86) 22%, rgba(0,0,0,0.52) 40%, rgba(0,0,0,0.18) 58%, rgba(0,0,0,0) 100%), url(${heroBackground.src});`}
+  >
+    <div class="absolute inset-0 bg-[#081b38]/20"></div>
+    <div class="max-w-[560px] pl-12 pr-10 py-15 relative z-10">
+      <h1 class="text-5xl font-black leading-tight">
+        Engineering<br /><span class="text-[#e8720c]">Machinery</span><br />Solutions
+      </h1>
+      <div class="text-sm font-semibold tracking-wider text-[#c9d6e8] mt-2 mb-4">
+        BUILT FOR CAMBODIA'S INDUSTRY
+      </div>
+      <p class="text-sm text-[#c9d6e8] max-w-md mb-6 leading-relaxed">
+        We design, build, install and maintain high-quality industrial machinery to power your business and drive the future.
+      </p>
+      <div class="flex gap-4">
+        <a href="#services" class="border-2 border-white px-5 py-3 text-xs font-bold text-white bg-white/5 hover:bg-white/15 rounded-xs transition">
+          Our Services &rarr;
+        </a>
+        <a href="#products" class="bg-[#e8720c] hover:bg-[#c85f08] px-5 py-3 text-xs font-bold text-white rounded-xs transition">
+          View Products &rarr;
+        </a>
+      </div>
     </div>
   </section>
+
+  <FeatureStrip />
+
+  <!-- PRODUCTS & SERVICES -->
+<section class="bg-white py-16 px-10" id="products">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-11">
+        <h2 class="text-3xl font-black text-[#0d2a52] relative inline-block pb-3 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-15 after:h-1 after:bg-[#e8720c]">
+          Our Products & Services
+        </h2>
+        <p class="text-slate-500 text-sm mt-3">Reliable machinery and professional services for all industrial needs</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+        {products.map((item) => (
+          <ProductCard {...item} />
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="#" class="bg-[#0d2a52] hover:bg-[#081b38] text-white px-7 py-3.5 font-bold text-xs rounded-xs inline-block transition">
+          View All Products & Services &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <StatsBar />
+
+  <!-- ABOUT + INDUSTRIES -->
+  <section class="grid md:grid-cols-2 gap-12 py-16 px-10 bg-[#f4f6f8]" id="about">
+    <div>
+      <h3 class="text-2xl font-black text-[#0d2a52] mb-4">About D.TEC</h3>
+      <p class="text-sm text-[#556173] mb-3 leading-relaxed">
+        Founded in 2019 in Phnom Penh City, Cambodia, D.TEC is a local engineering and machinery company committed to providing high-quality, reliable and cost-effective solutions for industrial businesses.
+      </p>
+      <p class="text-sm text-[#556173] mb-6 leading-relaxed">
+        We combine engineering expertise, modern technology and professional service to help our customers improve productivity, efficiency and workplace safety.
+      </p>
+      <a href="#" class="bg-[#0d2a52] hover:bg-[#081b38] text-white px-6 py-3 font-bold text-xs rounded-xs inline-block transition mb-5">
+        Read More About Us &rarr;
+      </a>
+      <div class="h-56 rounded bg-gradient-to-br from-[#d8dee5] to-[#e7ebef] flex items-center justify-center text-[#7a8794] text-xs font-mono">
+        Photo: D.TEC Building / Office
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-2xl font-black text-[#0d2a52] mb-6 relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-[#e8720c]">
+        Industries We Serve
+      </h3>
+      
+      <div class="flex flex-wrap gap-6 mb-8">
+        {industries.map((ind) => (
+          <div class="text-center w-20">
+            <div class="w-13 h-13 rounded-full bg-white border border-[#dde3ea] flex items-center justify-center mx-auto mb-2 text-xl text-[#0d2a52]">
+              {ind.icon}
+            </div>
+            <span class="text-[10px] text-[#647084] font-semibold uppercase tracking-wider block">{ind.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="bg-[#0d2a52] text-white p-7 rounded relative overflow-hidden" id="services">
+        <h4 class="text-lg font-black mb-2">Let's Build the Future Together</h4>
+        <p class="text-xs text-[#c9d6e8] mb-4 max-w-xs leading-relaxed">
+          We are ready to provide the best engineering and machinery solutions for your business.
+        </p>
+        <a href="#contact" class="bg-[#e8720c] hover:bg-[#c85f08] text-white px-5 py-3 font-bold text-xs rounded-xs inline-block transition">
+          Contact Us Today &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#081b38] text-[#a8b6c6] pt-12 pb-5 px-10" id="contact">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-8 text-xs">
+      <div>
+        <div class="w-10 h-10 rounded-full bg-[#0d2a52] flex items-center justify-center text-white font-bold text-sm border-2 border-[#e8720c] mb-3">
+          DT
+        </div>
+        <div class="text-white text-lg font-black">D.TEC</div>
+        <p class="mt-2 leading-relaxed">Industrial Engineering Solutions<br />Built for Cambodia.</p>
+      </div>
+
+      <div>
+        <h5 class="text-white font-bold text-sm mb-4">Quick Links</h5>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-[#e8720c]">Home</a></li>
+          <li><a href="#about" class="hover:text-[#e8720c]">About Us</a></li>
+          <li><a href="#products" class="hover:text-[#e8720c]">Products</a></li>
+          <li><a href="#services" class="hover:text-[#e8720c]">Services</a></li>
+          <li><a href="#contact" class="hover:text-[#e8720c]">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-white font-bold text-sm mb-4">Our Services</h5>
+        <ul class="space-y-2">
+          <li>Installation</li>
+          <li>Maintenance & Repair</li>
+          <li>Overhaul</li>
+          <li>Spare Parts Support</li>
+          <li>Steel Cutting Service</li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-white font-bold text-sm mb-4">Contact Us</h5>
+        <div class="space-y-2">
+          <p><span class="text-[#e8720c] mr-2">📍</span>Phnom Penh City, Cambodia</p>
+          <p><span class="text-[#e8720c] mr-2">📞</span>+855 10 123 456</p>
+          <p><span class="text-[#e8720c] mr-2">✉</span>info@dtec.com.kh</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto border-t border-white/10 pt-5 flex justify-between text-[11px]">
+      <span>© 2019 – 2026 D.TEC. All Rights Reserved.</span>
+      <span>Designed & Developed by D.TEC Team</span>
+    </div>
+  </footer>
 </Layout>

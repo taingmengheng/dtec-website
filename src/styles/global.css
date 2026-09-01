@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@theme {
+  --color-dtec-blue: #0D2B4F;
+  --color-dtec-orange: #F07A00;
+  --color-dtec-gray: #595959;
+}

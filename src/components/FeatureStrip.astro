@@ -1,0 +1,23 @@
+---
+const features = [
+  { icon: "⚙", title: "Engineering Excellence", desc: "Custom design & control system" },
+  { icon: "✓", title: "Safety & Reliability", desc: "Safety first in every solution we deliver" },
+  { icon: "🤝", title: "Local Solutions Faster Support", desc: "Based in Cambodia, here when you need us" },
+  { icon: "🎓", title: "Training & Support", desc: "Operator training & after-sales support" },
+  { icon: "🔧", title: "Spare Parts Support", desc: "We help you find the right parts" }
+];
+---
+
+<div class="bg-[#081b38] px-10 py-7 flex flex-wrap justify-between gap-5">
+  {features.map((f) => (
+    <div class="flex-1 min-w-[150px] flex items-start gap-3 text-white">
+      <div class="w-10 h-10 border-2 border-white rounded-full flex-shrink-0 flex items-center justify-center text-white text-lg">
+        {f.icon}
+      </div>
+      <div>
+        <h4 class="text-xs font-bold mb-1">{f.title}</h4>
+        <p class="text-[11px] text-[#a8b6c6]">{f.desc}</p>
+      </div>
+    </div>
+  ))}
+</div>

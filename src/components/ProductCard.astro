@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  desc: string;
+  icon: string;
+  thumbText: string;
+}
+
+const { title, desc, icon, thumbText } = Astro.props;
+---
+
+<div class="border border-[#e6e9ed] rounded bg-white overflow-hidden shadow-sm hover:shadow-lg transition flex flex-col justify-between group">
+  <div>
+    <!-- Placeholder image -->
+    <div class="h-32 bg-gradient-to-br from-[#d8dee5] to-[#e7ebef] flex items-center justify-center text-[#7a8794] text-xs text-center p-2 font-mono">
+      Photo:<br />{thumbText}
+    </div>
+
+    <!-- Body content with overlapping badge -->
+    <div class="p-4 pt-6 relative">
+      <div class="w-10 h-10 rounded-full bg-white border border-[#e2e6ea] flex items-center justify-center absolute -top-5 left-4 text-lg text-[#e8720c] shadow-md">
+        {icon}
+      </div>
+
+      <h4 class="font-bold text-sm text-[#0d2a52] mt-2 mb-1">{title}</h4>
+      <p class="text-xs text-[#7a8794] leading-relaxed whitespace-pre-line">{desc}</p>
+      
+      <span class="absolute right-3 bottom-3 text-[#e8720c] font-bold text-sm">&rsaquo;</span>
+    </div>
+  </div>
+</div>

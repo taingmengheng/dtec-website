@@ -1,0 +1,11 @@
+[
+  { "id": "overhead-crane", "title": "Overhead Cranes", "desc": "Single / Double Girder Cranes. Custom design & installation." },
+  { "id": "gantry-crane", "title": "Gantry Cranes", "desc": "Portable & Rail Mounted Gantry Cranes." },
+  { "id": "cargo-lifts", "title": "Cargo Lifts", "desc": "Safe & reliable lifts for industrial applications." },
+  { "id": "press-brakes", "title": "Press Brakes", "desc": "High precision press brake machines." },
+  { "id": "decoiler", "title": "Decoiler Machines", "desc": "Motorized decoiler for coil handling." },
+  { "id": "cnc-laser", "title": "CNC Fiber Laser", "desc": "Steel cutting service with CNC Fiber Laser." },
+  { "id": "bmu-services", "title": "BMU Services", "desc": "Building Maintenance Unit installation & service." },
+  { "id": "dock-leveler", "title": "Dock Leveler", "desc": "Hydraulic dock leveler for loading & unloading safety." },
+  { "id": "control-electrical", "title": "Control & Electrical", "desc": "Electrical panel, VFD, Control system & Safety circuit." }
+]
