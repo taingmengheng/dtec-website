@@ -1,24 +1,36 @@
 ---
+// StatsStrip.astro
 const stats = [
   { icon: "🏆", num: "5+", label: "Years Experience", sub: "Since 2019" },
   { icon: "⚙", num: "100+", label: "Projects Completed", sub: "Across Cambodia" },
-  { icon: "👥", num: "50+", label: "Happy Customers", sub: "Trusted by industries" },
   { icon: "🛡", num: "Safety", label: "Our Priority", sub: "Zero compromise" },
   { icon: "📍", num: "Cambodia", label: "Proudly Local", sub: "Supporting local industry" }
 ];
 ---
 
-<div class="bg-[#081b38] px-10 py-8 flex flex-wrap justify-around gap-5">
-  {stats.map((s) => (
-    <div class="flex items-center gap-3.5 text-white min-w-[190px]">
-      <div class="w-11 h-11 border-2 border-[#e8720c] rounded-full flex items-center justify-center text-[#e8720c] text-xl flex-shrink-0">
-        {s.icon}
+<div class="bg-[#081b38] px-4 py-6 sm:px-10 sm:py-8">
+  {/* Mobile: Clean 2x2 Grid | Desktop: 4 Columns */}
+  <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+    {stats.map((s) => (
+      <div class="flex items-center gap-3 text-white sm:gap-3.5">
+        {/* Circle Icon Badge */}
+        <div class="w-10 h-10 border-2 border-[#e8720c] rounded-full flex items-center justify-center text-[#e8720c] text-lg flex-shrink-0 sm:w-11 sm:h-11 sm:text-xl bg-white/5">
+          {s.icon}
+        </div>
+
+        {/* Stat Labels */}
+        <div class="min-w-0 flex-1">
+          <div class="text-base font-black text-white leading-tight sm:text-xl">
+            {s.num}
+          </div>
+          <div class="text-[10px] font-bold text-[#9fadbe] uppercase tracking-wider leading-tight truncate sm:text-[11px]">
+            {s.label}
+          </div>
+          <div class="text-[10px] text-[#7d8ca0] leading-snug truncate sm:text-[11px]">
+            {s.sub}
+          </div>
+        </div>
       </div>
-      <div>
-        <div class="text-xl font-black text-white">{s.num}</div>
-        <div class="text-[11px] text-[#9fadbe] uppercase tracking-wider">{s.label}</div>
-        <div class="text-[11px] text-[#7d8ca0]">{s.sub}</div>
-      </div>
-    </div>
-  ))}
+    ))}
+  </div>
 </div>
