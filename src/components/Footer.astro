@@ -1,41 +1,53 @@
 ---
+import white_logo from '../assets/white_logo.png';
+import contact from '../data/contact.json';
+
+const phoneLink = contact.phone.replace(/[^+\d]/g, '');
+const telegramLink = `https://t.me/${phoneLink}`;
 ---
-<footer class="bg-[#0D2B4F] text-white pt-12 pb-6 text-xs">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 mb-12">
-    <div>
-      <span class="text-2xl font-black tracking-tighter">D.TEC</span>
-      <p class="text-slate-400 mt-3 leading-relaxed">
-        Industrial Engineering Solutions Built for Cambodia.
-      </p>
+
+<footer class="bg-dtec-navy text-[#a8b6c6] pt-10 pb-5 px-4 sm:px-6 sm:pt-12 lg:px-10" id="contact">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 gap-x-5 gap-y-8 mb-8 text-xs sm:gap-10 sm:text-sm md:grid-cols-4">
+    <div class="col-span-2 md:col-span-1">
+        <img src={white_logo.src} alt="D.TEC logo" class="w-40 h-14 object-contain object-left sm:w-52 sm:h-16" />
+      <p class="mt-2 leading-relaxed">Industrial Engineering Solutions<br />Built for Cambodia.</p>
     </div>
+
     <div>
-      <h4 class="font-bold text-[#F07A00] uppercase mb-3">Quick Links</h4>
-      <ul class="space-y-2 text-slate-300">
-        <li><a href="/" class="hover:underline">Home</a></li>
-        <li><a href="/about" class="hover:underline">About Us</a></li>
-        <li><a href="/products" class="hover:underline">Products</a></li>
-        <li><a href="/services" class="hover:underline">Services</a></li>
+      <h5 class="text-white font-bold text-sm mb-4">Quick Links</h5>
+      <ul class="space-y-2">
+        <li><a href="/" class="hover:text-dtec-orange">Home</a></li>
+        <li><a href="/#about" class="hover:text-dtec-orange">About Us</a></li>
+        <li><a href="/products/" class="hover:text-dtec-orange">Products</a></li>
+        <li><a href="/#services" class="hover:text-dtec-orange">Services</a></li>
+        <li><a href="/contact/" class="hover:text-dtec-orange">Contact Us</a></li>
       </ul>
     </div>
+
     <div>
-      <h4 class="font-bold text-[#F07A00] uppercase mb-3">Our Services</h4>
-      <ul class="space-y-2 text-slate-300">
-        <li>Installation & Maintenance</li>
-        <li>Overhaul & Repair</li>
-        <li>Control Systems & VFD</li>
+      <h5 class="text-white font-bold text-sm mb-4">Our Services</h5>
+      <ul class="space-y-2">
+        <li>Installation</li>
+        <li>Maintenance &amp; Repair</li>
+        <li>Overhaul</li>
         <li>Spare Parts Support</li>
+        <li>Steel Cutting Service</li>
       </ul>
     </div>
-    <div>
-      <h4 class="font-bold text-[#F07A00] uppercase mb-3">Contact Us</h4>
-      <p class="text-slate-300 leading-relaxed">
-        Phnom Penh City, Cambodia<br/>
-        Phone: +855 10 123 456<br/>
-        Email: info@dtec.com.kh
-      </p>
+
+    <div class="col-span-2 md:col-span-1">
+      <h5 class="text-white font-bold text-sm mb-4">Contact Us</h5>
+      <div class="space-y-2 break-words">
+        <p><span class="text-dtec-orange mr-2">📍</span>{contact.location}</p>
+        <p><span class="text-dtec-orange mr-2">📞</span><a href={`tel:${phoneLink}`} class="hover:text-white">{contact.phone}</a></p>
+        <p><span class="mr-2 inline-block w-5 text-center text-xs font-black text-dtec-orange">TG</span><a href={telegramLink} target="_blank" rel="noreferrer" class="hover:text-white">Message us on Telegram</a></p>
+        <p><span class="text-dtec-orange mr-2">✉</span><a href={`mailto:${contact.email}`} class="hover:text-white">{contact.email}</a></p>
+      </div>
     </div>
   </div>
-  <div class="border-t border-slate-800 pt-6 text-center text-slate-500 text-[11px]">
-    © 2019 - {new Date().getFullYear()} D.TEC. All Rights Reserved.
+
+  <div class="max-w-7xl mx-auto border-t border-white/10 pt-5 flex flex-col gap-2 text-xs leading-relaxed sm:flex-row sm:justify-between sm:text-sm">
+    <span>© 2019 – 2026 D.TEC. All Rights Reserved.</span>
+    <span>Designed &amp; Developed by D.TEC Team</span>
   </div>
 </footer>

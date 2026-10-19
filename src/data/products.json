@@ -1,11 +1,12 @@
 [
-  { "id": "overhead-crane", "title": "Overhead Cranes", "desc": "Single / Double Girder Cranes. Custom design & installation." },
-  { "id": "gantry-crane", "title": "Gantry Cranes", "desc": "Portable & Rail Mounted Gantry Cranes." },
-  { "id": "cargo-lifts", "title": "Cargo Lifts", "desc": "Safe & reliable lifts for industrial applications." },
-  { "id": "press-brakes", "title": "Press Brakes", "desc": "High precision press brake machines." },
-  { "id": "decoiler", "title": "Decoiler Machines", "desc": "Motorized decoiler for coil handling." },
-  { "id": "cnc-laser", "title": "CNC Fiber Laser", "desc": "Steel cutting service with CNC Fiber Laser." },
-  { "id": "bmu-services", "title": "BMU Services", "desc": "Building Maintenance Unit installation & service." },
-  { "id": "dock-leveler", "title": "Dock Leveler", "desc": "Hydraulic dock leveler for loading & unloading safety." },
-  { "id": "control-electrical", "title": "Control & Electrical", "desc": "Electrical panel, VFD, Control system & Safety circuit." }
+  { "id": "overhead-crane", "title": "Overhead Cranes", "desc": "Single / Double Girder Cranes. Custom design & installation.", "icon": "⛓" },
+  { "id": "gantry-crane", "title": "Gantry Cranes", "desc": "Portable & Rail Mounted Gantry Cranes.", "icon": "🏗" },
+  { "id": "cargo-lifts", "title": "Cargo Lifts", "desc": "Safe & reliable lifts for industrial applications.", "icon": "📦" },
+  { "id": "press-brakes", "title": "Press Brakes", "desc": "High precision press brake machines.", "icon": "🛠" },
+  { "id": "decoiler", "title": "Decoiler Machines", "desc": "Motorized decoiler for coil handling.", "icon": "🌀" },
+  { "id": "cnc-laser", "title": "CNC Fiber Laser", "desc": "Steel cutting service with CNC Fiber Laser.", "icon": "✂" },
+  { "id": "bmu-services", "title": "BMU Services", "desc": "Building Maintenance Unit installation & service.", "icon": "🏢" },
+  { "id": "dock-leveler", "title": "Dock Leveler", "desc": "Hydraulic dock leveler for loading & unloading safety.", "icon": "🚛" },
+  { "id": "freezer-room-service", "title": "Freezer Room Service", "desc": "Installation & service up to 15kW.", "icon": "❄" },
+  { "id": "control-electrical", "title": "Control & Electrical", "desc": "Electrical panel, VFD, Control system & Safety circuit.", "icon": "⚡" }
 ]

@@ -1,25 +1,133 @@
 ---
----
-<header class="bg-white border-b border-slate-200 sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-3">
-      <span class="text-2xl font-black text-[#0D2B4F]">D.TEC</span>
-      <span class="hidden sm:inline border-l border-slate-300 pl-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-        Engineering • Machinery • Services
-      </span>
-    </a>
+import logo from '../assets/logo.jpg';
 
-    <nav class="hidden md:flex items-center gap-6 text-xs font-bold text-[#0D2B4F] tracking-wide">
-      <a href="/" class="text-[#F07A00]">HOME</a>
-      <a href="/about" class="hover:text-[#F07A00] transition">ABOUT US</a>
-      <a href="/products" class="hover:text-[#F07A00] transition">PRODUCTS</a>
-      <a href="/services" class="hover:text-[#F07A00] transition">SERVICES</a>
-      <a href="/projects" class="hover:text-[#F07A00] transition">PROJECTS</a>
-      <a href="/contact" class="hover:text-[#F07A00] transition">CONTACT</a>
+const isHome = Astro.url.pathname === '/';
+const isProducts = Astro.url.pathname.startsWith('/products');
+const isContact = Astro.url.pathname.startsWith('/contact');
+---
+
+<header class="sticky top-0 z-20 bg-white shadow-sm transition-transform duration-300 ease-in-out motion-reduce:transition-none">
+  <div class="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-1 sm:px-6 sm:py-2 lg:px-10">
+    <div class="flex items-center gap-3">
+      <img src={logo.src} alt="D.TEC logo" class="w-40 h-14 object-contain object-left sm:w-52 sm:h-16" />
+    </div>
+
+    <nav class="hidden lg:block">
+      <ul class="flex items-center gap-7 text-sm font-semibold text-[#2b3b4d]">
+        <li><a href="/" aria-current={isHome ? 'page' : undefined} class={isHome ? 'text-dtec-orange border-b-2 border-dtec-orange pb-1' : 'hover:text-dtec-orange'}>Home</a></li>
+        <li><a href="/products/" aria-current={isProducts ? 'page' : undefined} class={isProducts ? 'text-dtec-orange border-b-2 border-dtec-orange pb-1' : 'hover:text-dtec-orange'}>Products</a></li>
+        <li><a href="/#services" class="hover:text-dtec-orange">Services</a></li>
+        <li><a href="/#about" class="hover:text-dtec-orange">About Us</a></li>
+        <li><a href="/contact/" aria-current={isContact ? 'page' : undefined} class={isContact ? 'text-dtec-orange border-b-2 border-dtec-orange pb-1' : 'hover:text-dtec-orange'}>Contact</a></li>
+      </ul>
     </nav>
 
-    <a href="/contact" class="bg-[#F07A00] hover:bg-orange-600 text-white text-xs font-bold px-5 py-2.5 rounded shadow-sm transition">
-      GET A QUOTE &rarr;
+    <nav class="hidden items-center md:flex lg:hidden">
+      <ul class="flex items-center gap-4 text-xs font-semibold text-[#2b3b4d] sm:gap-6 sm:text-sm">
+        <li><a href="/" aria-current={isHome ? 'page' : undefined} class={isHome ? 'text-dtec-orange' : 'hover:text-dtec-orange'}>Home</a></li>
+        <li><a href="/products/" aria-current={isProducts ? 'page' : undefined} class={isProducts ? 'text-dtec-orange' : 'hover:text-dtec-orange'}>Products</a></li>
+        <li><a href="/#services" class="hover:text-dtec-orange">Services</a></li>
+        <li><a href="/#about" class="hover:text-dtec-orange">About</a></li>
+        <li><a href="/contact/" aria-current={isContact ? 'page' : undefined} class={isContact ? 'text-dtec-orange' : 'hover:text-dtec-orange'}>Contact</a></li>
+      </ul>
+    </nav>
+
+    <a href="/contact/#quote" class="hidden bg-dtec-orange hover:bg-dtec-orange-hover text-white px-3 py-2.5 font-bold text-xs rounded-xs transition md:inline-block sm:px-5 sm:py-3 sm:text-sm">
+      Get a Quote &rarr;
     </a>
+
+    <button
+      type="button"
+      id="mobile-menu-button"
+      class="flex h-10 w-10 items-center justify-center border border-dtec-blue text-xl font-bold text-dtec-blue md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Open navigation menu"
+    >
+      &#9776;
+    </button>
+
+    <nav id="mobile-menu" class="hidden basis-full border-t border-[#e6e9ed] pt-3 md:hidden">
+      <ul class="flex flex-col gap-3 text-sm font-semibold text-[#2b3b4d]">
+        <li><a href="/" aria-current={isHome ? 'page' : undefined} class={isHome ? 'block text-dtec-orange font-bold' : 'block hover:text-dtec-orange'}>Home</a></li>
+        <li><a href="/products/" aria-current={isProducts ? 'page' : undefined} class={isProducts ? 'block text-dtec-orange font-bold' : 'block hover:text-dtec-orange'}>Products</a></li>
+        <li><a href="/#services" class="block hover:text-dtec-orange">Services</a></li>
+        <li><a href="/#about" class="block hover:text-dtec-orange">About Us</a></li>
+        <li><a href="/contact/" aria-current={isContact ? 'page' : undefined} class={isContact ? 'block text-dtec-orange font-bold' : 'block hover:text-dtec-orange'}>Contact</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
+
+<style>
+  header.navbar-hidden {
+    transform: translateY(-100%);
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const menuButton = target.closest('#mobile-menu-button');
+    const mobileMenu = document.querySelector('#mobile-menu');
+
+    if (menuButton) {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+      mobileMenu?.classList.toggle('hidden', isOpen);
+      return;
+    }
+
+    if (target.closest('#mobile-menu a')) {
+      document.querySelector('#mobile-menu-button')?.setAttribute('aria-expanded', 'false');
+      document.querySelector('#mobile-menu-button')?.setAttribute('aria-label', 'Open navigation menu');
+      mobileMenu?.classList.add('hidden');
+    }
+  });
+
+  const header = document.querySelector('header');
+
+  if (header) {
+    let previousScrollY = window.scrollY;
+    let accumulatedScroll = 0;
+    let lastScrollDirection = 0;
+    let ticking = false;
+
+    const revealHeader = () => header.classList.remove('navbar-hidden');
+
+    header.addEventListener('focusin', revealHeader);
+
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const scrollDelta = currentScrollY - previousScrollY;
+        const direction = Math.sign(scrollDelta);
+        const mobileMenuOpen = header.querySelector('#mobile-menu-button')?.getAttribute('aria-expanded') === 'true';
+        const headerHasFocus = header.contains(document.activeElement);
+
+        if (currentScrollY <= 80 || mobileMenuOpen || headerHasFocus) {
+          revealHeader();
+          accumulatedScroll = 0;
+          lastScrollDirection = 0;
+        } else if (direction !== 0) {
+          accumulatedScroll = direction === lastScrollDirection ? accumulatedScroll + Math.abs(scrollDelta) : Math.abs(scrollDelta);
+          lastScrollDirection = direction;
+
+          if (accumulatedScroll >= 8) {
+            header.classList.toggle('navbar-hidden', direction > 0);
+            accumulatedScroll = 0;
+          }
+        }
+
+        previousScrollY = currentScrollY;
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+</script>

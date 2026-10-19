@@ -1,31 +1,28 @@
 ---
 interface Props {
+  id: string;
   title: string;
   desc: string;
   icon: string;
-  thumbText: string;
 }
 
-const { title, desc, icon, thumbText } = Astro.props;
+const { id, title, desc, icon } = Astro.props;
 ---
 
-<div class="border border-[#e6e9ed] rounded bg-white overflow-hidden shadow-sm hover:shadow-lg transition flex flex-col justify-between group">
+<a href={`/products/${id}/`} aria-label={`View ${title} details`} class="border border-[#e6e9ed] rounded bg-white overflow-hidden shadow-sm hover:shadow-lg transition flex flex-col justify-between group">
   <div>
-    <!-- Placeholder image -->
-    <div class="h-32 bg-gradient-to-br from-[#d8dee5] to-[#e7ebef] flex items-center justify-center text-[#7a8794] text-[11px] text-center p-2 font-mono sm:text-xs">
-      Photo:<br />{thumbText}
+    <div class="h-32 bg-gradient-to-br from-[#d8dee5] to-[#e7ebef] flex items-center justify-center text-[#7a8794] text-4xl sm:text-5xl" aria-hidden="true">
+      {icon}
     </div>
 
-    <!-- Body content with overlapping badge -->
     <div class="p-3 pt-6 relative sm:p-4 sm:pt-6">
-      <div class="w-10 h-10 rounded-full bg-white border border-[#e2e6ea] flex items-center justify-center absolute -top-5 left-4 text-base text-[#e8720c] shadow-md sm:text-lg">
+      <div class="w-10 h-10 rounded-full bg-white border border-[#e2e6ea] flex items-center justify-center absolute -top-5 left-4 text-base text-dtec-orange shadow-md sm:text-lg">
         {icon}
       </div>
 
-      <h4 class="font-bold text-xs text-[#0d2a52] mt-2 mb-1 sm:text-sm">{title}</h4>
-      <p class="text-[11px] text-[#7a8794] leading-relaxed whitespace-pre-line sm:text-xs">{desc}</p>
-      
-      <span class="absolute right-3 bottom-3 text-[#e8720c] font-bold text-sm">&rsaquo;</span>
+      <h4 class="font-bold text-sm text-dtec-blue mt-2 mb-1 sm:text-base">{title}</h4>
+      <p class="text-xs text-[#7a8794] leading-relaxed whitespace-pre-line sm:text-sm">{desc}</p>
+      <span class="mt-4 inline-flex items-center gap-2 text-xs font-bold text-dtec-orange sm:text-sm">View details <span aria-hidden="true">&rarr;</span></span>
     </div>
   </div>
-</div>
+</a>

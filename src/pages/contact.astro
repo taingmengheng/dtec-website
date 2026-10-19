@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import contact from '../data/contact.json';
+
+const phoneLink = contact.phone.replace(/[^+\d]/g, '');
+const telegramLink = `https://t.me/${phoneLink}`;
+const quoteSubject = encodeURIComponent('Project inquiry for D.TEC');
+const quoteBody = encodeURIComponent('Hello D.TEC,\n\nI would like to discuss a project.\n\nCompany:\nProject or service needed:\nLocation:\nTimeline:\nAdditional details:');
+const quoteEmail = `mailto:${contact.email}?subject=${quoteSubject}&body=${quoteBody}`;
+---
+
+<Layout title="Contact D.TEC | Request a Quote" description="Contact D.TEC in Phnom Penh to discuss industrial machinery, engineering services, or a project quote.">
+  <Navbar />
+
+  <main>
+    <section class="bg-dtec-navy px-4 py-12 text-white sm:px-6 sm:py-16 lg:px-10">
+      <div class="mx-auto max-w-7xl">
+        <p class="mb-2 text-xs font-bold uppercase tracking-wider text-dtec-orange sm:text-sm">Contact D.TEC</p>
+        <h1 class="max-w-2xl text-3xl font-black sm:text-4xl">Let's talk about your project.</h1>
+        <p class="mt-3 max-w-2xl text-sm leading-relaxed text-[#c9d6e8] sm:text-base">
+          Get in touch about machinery, engineering services, maintenance, or a quote for your business.
+        </p>
+      </div>
+    </section>
+
+    <section class="px-4 py-10 sm:px-6 sm:py-14 lg:px-10" id="quote">
+      <div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1fr_0.8fr] md:gap-16">
+        <div>
+          <h2 class="text-xl font-black sm:text-2xl">Contact details</h2>
+          <p class="mt-3 max-w-xl text-sm leading-relaxed text-[#556173] sm:text-base">
+            Contact our team directly, or send an email with a few details about what you need.
+          </p>
+
+          <dl class="mt-8 divide-y divide-[#e2e6ea] border-y border-[#e2e6ea]">
+            <div class="grid gap-1 py-5 sm:grid-cols-[140px_1fr] sm:gap-4">
+              <dt class="text-xs font-bold uppercase tracking-wider text-[#7a8794]">Phone / Telegram</dt>
+              <dd>
+                <a href={`tel:${phoneLink}`} class="font-bold hover:text-dtec-orange">{contact.phone}</a>
+                <div class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+                  <a href={`tel:${phoneLink}`} class="font-bold text-dtec-orange hover:text-dtec-orange-hover">Call</a>
+                  <span class="text-[#7a8794]">or</span>
+                  <a href={telegramLink} target="_blank" rel="noreferrer" class="font-bold text-[#229ED9] hover:text-[#1683B8]">Message us on Telegram <span aria-hidden="true">&rarr;</span></a>
+                </div>
+              </dd>
+            </div>
+            <div class="grid gap-1 py-5 sm:grid-cols-[140px_1fr] sm:gap-4">
+              <dt class="text-xs font-bold uppercase tracking-wider text-[#7a8794]">Email</dt>
+              <dd><a href={`mailto:${contact.email}`} class="break-all font-bold hover:text-dtec-orange">{contact.email}</a></dd>
+            </div>
+            <div class="grid gap-1 py-5 sm:grid-cols-[140px_1fr] sm:gap-4">
+              <dt class="text-xs font-bold uppercase tracking-wider text-[#7a8794]">Location</dt>
+              <dd class="font-semibold text-[#556173] text-white">{contact.location}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <aside class="border-l-4 border-dtec-orange bg-[#f4f6f8] p-6 sm:p-8">
+          <p class="text-xs font-bold uppercase tracking-wider text-dtec-orange">Request a quote</p>
+          <h2 class="mt-2 text-xl font-black text-dtec-blue">Tell us what you need.</h2>
+          <p class="mt-3 text-sm leading-relaxed text-[#556173]">
+            Include your company, the machinery or service you are interested in, project location, and timing. We’ll receive your message in your email app for you to review and send.
+          </p>
+          <a href={quoteEmail} class="mt-6 inline-flex items-center gap-2 bg-dtec-orange px-5 py-3 text-sm font-bold text-white transition hover:bg-dtec-orange-hover">
+            Prepare an email <span aria-hidden="true">&rarr;</span>
+          </a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
